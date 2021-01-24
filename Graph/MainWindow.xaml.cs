@@ -33,7 +33,7 @@ namespace Graph
         {
             canvas.Children.Clear();
 
-            foreach (Connection connection in Data.Connections)
+            foreach (Connection connection in Data.Connections.List)
             {
                 VisualData.AddLine(canvas, connection.A.Point, connection.B.Point);
 
@@ -56,14 +56,14 @@ namespace Graph
                 VisualData.AddText(canvas, middle, ((int)(connection.value)).ToString(), theta);
             }
 
-            foreach (Node node in Data.Nodes)
+            foreach (Node node in Data.Nodes.List)
             {
                 if (ConnectCanvasEvents.Connecting && node == ConnectCanvasEvents.A)
                     VisualData.AddCircle(canvas, node.Point, VisualData.CircleRadius, VisualData.CircleFillConnecting);
                 else
                     VisualData.AddCircle(canvas, node.Point, VisualData.CircleRadius, VisualData.CircleFill);
 
-                string text = (Data.Nodes.IndexOf(node) + 1).ToString();
+                string text = (Data.Nodes.List.IndexOf(node) + 1).ToString();
                 VisualData.AddText(canvas, node.Point, text, Cursors.Hand);
             }                
         }
@@ -82,6 +82,10 @@ namespace Graph
         {
             events.MouseDown(sender, e);
         }
-        
+
+        private void algorithm_button_Click(object sender, RoutedEventArgs e)
+        {
+            DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(Data.Nodes.List[0], Data.Nodes.List, Data.Connections.List);
+        }
     }
 }

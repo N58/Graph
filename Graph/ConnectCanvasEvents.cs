@@ -42,7 +42,10 @@ namespace Graph
             Node curr = Data.IsInAnyCircle(pos);
 
             if (curr == null)
+            {
+                ConnectionFailed(canvas);
                 return;
+            }
 
             if (!Connecting)
             {
@@ -54,26 +57,26 @@ namespace Graph
             {
                 B = curr;
                 Connection conn = new Connection(A, B);
-                
-                if (curr == conn.A)
+
+                if (curr == conn.A || Data.Connections.ConnectionExist(conn.A, conn.B))
                 {
-                    B = null;
+                    ConnectionFailed(canvas);
                     return;
                 }
 
-                if (Data.ConnectionExist(conn.A, conn.B))
-                {
-                    OnNodeConnectingFail?.Invoke(this, new OnNodeEventArgs { canvas = canvas, node = A });
-                    A = null;
-                    B = null;
-                    Connecting = false;
-                    return;
-                }
-
-                Data.Connections.Add(conn);
+                Data.Connections.List.Add(conn);
                 Connecting = false;
                 OnNodeConnected?.Invoke(this, new OnNodeConnectedEventArgs { canvas = canvas, connection = conn });
             }
+        }
+
+        private void ConnectionFailed(Canvas canvas)
+        {
+            OnNodeConnectingFail?.Invoke(this, new OnNodeEventArgs { canvas = canvas, node = A });
+            A = null;
+            B = null;
+            Connecting = false;
+            return;
         }
     }
 }

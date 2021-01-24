@@ -7,13 +7,13 @@ using System.Windows;
 
 namespace Graph
 {
-    class GraphicObject : UIElement
+    class Graphic : UIElement
     {
         public ILogicElement LogicElement { get; set; }
         public UIElement Shape { get; set; }
         public UIElement Text { get; set; }
 
-        public GraphicObject(ILogicElement logicElement, UIElement shape, UIElement text)
+        public Graphic(ILogicElement logicElement, UIElement shape, UIElement text)
         {
             LogicElement = logicElement;
             Shape = shape;

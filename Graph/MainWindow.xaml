@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Graph"
         mc:Ignorable="d"
-        Title="MainWindow" Height="750" Width="1280">
+        Title="MainWindow" Height="750" Width="1280"
+        ResizeMode="CanMinimize">
     <Grid Height="720" Width="1280">
         <Canvas x:Name="canvas" Background="White" HorizontalAlignment="Left" Height="652" VerticalAlignment="Top" Width="1270" MouseDown="canvas_MouseDown">
             <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="652" VerticalAlignment="Top" Width="1270" />
         </Canvas>
         <Button x:Name="add_button" Content="Dodaj" HorizontalAlignment="Left" Height="53" Margin="10,657,0,0" VerticalAlignment="Top" Width="80" Click="add_button_Click"/>
         <Button x:Name="connect_button" Content="Połącz" HorizontalAlignment="Left" Height="53" Margin="95,657,0,0" VerticalAlignment="Top" Width="80" Click="connect_button_Click"/>
-        <Button x:Name="algorithm_button" Content="Algorytm" HorizontalAlignment="Left" Height="53" Margin="180,657,0,0" VerticalAlignment="Top" Width="80"/>
+        <Button x:Name="algorithm_button" Content="Algorytm" HorizontalAlignment="Left" Height="53" Margin="180,657,0,0" VerticalAlignment="Top" Width="80" Click="algorithm_button_Click"/>
     </Grid>
 </Window>

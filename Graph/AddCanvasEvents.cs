@@ -41,11 +41,11 @@ namespace Graph
                 pos.Y - (VisualData.CircleRadius / 2) < 0)
                 return;
 
-            foreach (Node item in Data.Nodes)
+            foreach (Node item in Data.Nodes.List)
                 if (Data.IsInCircle(pos, item))
                     return;
 
-            Data.Nodes.Add(node);
+            Data.Nodes.List.Add(node);
             OnNodeAdded?.Invoke(this, new OnNodeEventArgs { canvas = canvas, node = node });
         }
     }

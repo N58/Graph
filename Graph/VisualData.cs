@@ -15,37 +15,24 @@ namespace Graph
     static class VisualData
     {
         // Circle
-        private static double circleRadius = 40;
-        private static Brush circleFill = new SolidColorBrush(Color.FromRgb(120, 120, 255));
-        private static double circleStrokeThickness = 0.5;
-        private static Brush circleStroke = Brushes.Black;
-        private static Brush circleFillConnecting = new SolidColorBrush(Color.FromRgb(0, 255, 0));
-
-        public static double CircleRadius { get { return circleRadius; } }
-        public static Brush CircleFill { get { return circleFill; } }
-        public static double CircleStrokeThickness { get { return circleStrokeThickness; } }
-        public static Brush CircleStroke { get { return circleStroke; } }
-        public static Brush CircleFillConnecting { get { return circleFillConnecting; } }
+        public static double CircleRadius { get; } = 40;
+        public static Brush CircleFill { get; } = new SolidColorBrush(Color.FromRgb(120, 120, 255));
+        public static Brush CircleFillCurrent { get; } = new SolidColorBrush(Color.FromRgb(255, 50, 50));
+        public static Brush CircleFillVisited { get; } = new SolidColorBrush(Color.FromRgb(150, 150, 150));
+        public static double CircleStrokeThickness { get; } = 0.5;
+        public static Brush CircleStroke { get; } = Brushes.Black;
+        public static Brush CircleFillConnecting { get; } = new SolidColorBrush(Color.FromRgb(0, 255, 0));
 
         // Line
-        private static double lineStrokeThickness = 2;
-        private static Brush lineStroke = Brushes.Black;
-
-        public static double LineStrokeThickness { get { return lineStrokeThickness; } }
-        public static Brush LineStroke { get { return lineStroke; } }
+        public static double LineStrokeThickness { get; } = 2;
+        public static Brush LineStroke { get; } = Brushes.Black;
 
         // Text
-        private static double textFontSize = 18;
-        private static string textFontFamily = "arial";
-        private static double textRotation = 0;
-        private static Brush textColor = Brushes.Black;
-        private static Cursor textCursor = Cursors.Arrow;
-
-        public static double TextFontSize { get { return textFontSize; } }
-        public static string TextFontFamily { get { return textFontFamily; } }
-        public static double TextRotation { get { return textRotation; } }
-        public static Brush TextColor { get { return textColor; } }
-        public static Cursor TextCursor { get { return textCursor; } }
+        public static double TextFontSize { get; } = 18;
+        public static string TextFontFamily { get; } = "arial";
+        public static double TextRotation { get; } = 0;
+        public static Brush TextColor { get; } = Brushes.Black;
+        public static Cursor TextCursor { get; } = Cursors.Arrow;
 
         public static Line AddLine(Canvas canvas, Point A, Point B)
         {
