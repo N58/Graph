@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using Graph.Graphics;
+using System;
 using System.Windows;
+using System.Windows.Media;
 
-namespace Graph
+namespace Graph.Logic
 {
     public enum Status
     {
-        Standard,
+        Default,
         Current,
         Visited
     }
@@ -25,7 +21,7 @@ namespace Graph
         public double X { get; set; }
         public double Y { get; set; }
         public Point Point { get { return new Point(X, Y); } }
-        public Status Status { get; private set; } = Status.Standard;
+        public Status Status { get; private set; }
         public double Distance { get; private set; }
         public Node Previous { get; set; }
 
@@ -45,13 +41,24 @@ namespace Graph
         {
             Status = value;
             OnVisitedChanged?.Invoke(this, EventArgs.Empty);
-            Thread.Sleep(1000);
         }
 
         public void SetDistance(double value)
         {
             Distance = value;
             OnDistanceChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        internal Brush GetStatusColorFill()
+        {
+            var color = Status switch
+            {
+                Status.Default => VisualConfig.CircleFill,
+                Status.Current => VisualConfig.CircleFillCurrent,
+                Status.Visited => VisualConfig.CircleFillVisited,
+                _ => throw new NotImplementedException(),
+            };
+            return color;
         }
     }
 }

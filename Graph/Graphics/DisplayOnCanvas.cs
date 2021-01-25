@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using Graph.Logic;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using static Graph.AddCanvasEvents;
-using static Graph.ConnectCanvasEvents;
+using static Graph.Modes.AddOnCanvas;
+using static Graph.Modes.ConnectOnCanvas;
+using Graph.Graphics;
+using Graph.Windows;
 
-namespace Graph
+namespace Graph.Graphics
 {
-    static class DisplayCanvasElements
+    static class DisplayOnCanvas
     {
-        // jakaś lista przechowująca wszystkie elementy graficzne z odniesieniem do ich logicznych obiektów
-        static GraphicElements UIElements { get; set; } = new GraphicElements();
-
         internal static void Initialize()
         {
             OnNodeAdded += NodeAdded;
@@ -30,7 +25,7 @@ namespace Graph
 
         private static Graphic FindGraphic(ILogicElement logicElement)
         {
-            foreach (Graphic item in UIElements.List)
+            foreach (Graphic item in Data.UIElements.List)
             {
                 if (item.LogicElement == logicElement)
                     return item;
@@ -41,20 +36,20 @@ namespace Graph
 
         private static void NodeAdded(object sender, OnNodeEventArgs e)
         {
-            Ellipse circle = VisualData.AddCircle(e.canvas, e.node.Point, VisualData.CircleRadius, VisualData.CircleFill);
-            string text = (Data.Nodes.List.IndexOf(e.node) + 1).ToString();
-            TextBlock textblock = VisualData.AddText(e.canvas, e.node.Point, text, Cursors.Hand);
-            Graphic element = new Graphic(e.node, circle, textblock);
-            UIElements.List.Add(element);
-            e.node.OnVisitedChanged += NodeVisitedChanged;
-            e.node.OnDistanceChanged += NodeDistanceChanged;
+            Ellipse circle = VisualConfig.AddCircle(e.Canvas, e.Node.Point, VisualConfig.CircleRadius, VisualConfig.CircleFill);
+            string text = (Data.Nodes.List.IndexOf(e.Node) + 1).ToString();
+            TextBlock textblock = VisualConfig.AddText(e.Canvas, e.Node.Point, text, Cursors.Hand);
+            Graphic element = new Graphic(e.Node, circle, textblock);
+            Data.UIElements.List.Add(element);
+            e.Node.OnVisitedChanged += NodeVisitedChanged;
+            e.Node.OnDistanceChanged += NodeDistanceChanged;
         }
 
         private static void NodeConnecting(object sender, OnNodeEventArgs e)
         {
-            Graphic graphicNodeA = FindGraphic(e.node);
-            Ellipse circle = (Ellipse)graphicNodeA.Shape;
-            circle.Fill = VisualData.CircleFillConnecting;
+            Graphic graphicNodeA = FindGraphic(e.Node);
+            var circle = (Ellipse)graphicNodeA.Shape;
+            circle.Fill = VisualConfig.CircleFillConnecting;
         }
 
         private static void NodeConnected(object sender, OnNodeConnectedEventArgs e)
@@ -64,12 +59,12 @@ namespace Graph
             Node B = e.connection.B;
             double value = e.connection.value;
             Graphic graphicNodeA = FindGraphic(A);
-            Ellipse circle = (Ellipse)graphicNodeA.Shape;
+            var circle = (Ellipse)graphicNodeA.Shape;
 
-            circle.Fill = VisualData.CircleFill;
+            circle.Fill = VisualConfig.CircleFill;
 
 
-            Line line = VisualData.AddLine(canvas, A.Point, B.Point);
+            Line line = VisualConfig.AddLine(canvas, A.Point, B.Point);
 
             double deltaX = A.X - B.X;
             double deltaY = A.Y - B.Y;
@@ -87,37 +82,38 @@ namespace Graph
             middle.X += move * Math.Cos((theta - 90) * (Math.PI / 180));
             middle.Y += move * Math.Sin((theta - 90) * (Math.PI / 180));
 
-            TextBlock textblock = VisualData.AddText(canvas, middle, ((int)(value)).ToString(), theta);
+            TextBlock textblock = VisualConfig.AddText(canvas, middle, ((int)(value)).ToString(), theta);
 
             Graphic graphicObj = new Graphic(e.connection, line, textblock);
-            UIElements.List.Add(graphicObj);
+            Data.UIElements.List.Add(graphicObj);
         }
 
         private static void NodeConnectingFail(object sender, OnNodeEventArgs e)
         {
-            Graphic graphicNodeA = FindGraphic(e.node);
-            Ellipse circle = (Ellipse)graphicNodeA.Shape;
-            circle.Fill = VisualData.CircleFill;
+            Graphic graphicNodeA = FindGraphic(e.Node);
+            var circle = (Ellipse)graphicNodeA.Shape;
+            circle.Fill = VisualConfig.CircleFill;
         }
 
         private static void NodeVisitedChanged(object sender, EventArgs e)
         {
-            Node node = (Node)sender;
-            Ellipse circle = (Ellipse)UIElements.List.FirstOrDefault(n => n.LogicElement == node).Shape;
+            var node = (Node)sender;
+            var circle = (Ellipse)Data.UIElements.List.FirstOrDefault(n => n.LogicElement == node).Shape;
             Application.Current.Dispatcher.BeginInvoke(new Action(() =>
             {
-                if (node.Status == Status.Standard)
-                    circle.Fill = VisualData.CircleFill;
-                else if (node.Status == Status.Current)
-                    circle.Fill = VisualData.CircleFillCurrent;
-                else if (node.Status == Status.Visited)
-                    circle.Fill = VisualData.CircleFillVisited;
+                circle.Fill = node.GetStatusColorFill();
             }), DispatcherPriority.Background);
         }
 
         private static void NodeDistanceChanged(object sender, EventArgs e)
         {
-            Node node = (Node)sender;
+            var node = (Node)sender;
+        }
+
+        public static void ModeChanged()
+        {
+            var win = (MainWindow)Application.Current.MainWindow;
+            win.ModeText.Text = "Tryb - " + Data.Mode.ToString();
         }
     }
 }

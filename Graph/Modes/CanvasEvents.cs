@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Graph
+namespace Graph.Modes
 {
-    abstract class CanvasEvents
+    public abstract class CanvasEvents
     {
         public abstract void MouseDown(object sender, MouseButtonEventArgs e);
+
+        public abstract string ToString();
     }
 }

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Graph
+namespace Graph.Algorithms
 {
     abstract class Algorithm
     {
-        public AlgorithmDatas Datas { get; set; } = new AlgorithmDatas();
+        public AlgorithmDatas DataForAlgorithm { get; set; } = new AlgorithmDatas();
     }
 }

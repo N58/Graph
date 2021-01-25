@@ -1,0 +1,20 @@
+﻿<Window x:Class="Graph.Windows.ConnectMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Graph"
+        mc:Ignorable="d"
+        Title="Wybierz tryb" Height="189.011" Width="130.339"
+        ResizeMode="NoResize">
+    <Grid>
+        <TextBlock Margin="10,10,10,0" VerticalAlignment="Top" FontSize="20" TextAlignment="Center">Łączenie</TextBlock>
+        <Button Margin="10,52,10,0" VerticalAlignment="Top" Height="43" FontSize="14" Click="Add_Click">
+            <TextBlock TextAlignment="Center">Dodaj<LineBreak/>Łączenie</TextBlock>
+        </Button>
+        <Button Margin="10,100,10,0" FontSize="14" Height="41" VerticalAlignment="Top" Click="EditValue_Click">
+            <TextBlock TextAlignment="Center">Edytuj<LineBreak/>Wartości</TextBlock>
+        </Button>
+
+    </Grid>
+</Window>

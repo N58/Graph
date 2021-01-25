@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace Graph
+namespace Graph.Graphics
 {
-    static class VisualData
+    static class VisualConfig
     {
         // Circle
         public static double CircleRadius { get; } = 40;
@@ -69,10 +63,6 @@ namespace Graph
             canvas.Children.Add(circle);
             return circle;
         }
-        public static Ellipse AddCircle(Canvas canvas, Point position, double radius, Brush fill, Cursor cursor)
-        {
-            return AddCircle(canvas, position, radius, fill, cursor, CircleStrokeThickness, CircleStroke);
-        }
         public static Ellipse AddCircle(Canvas canvas, Point position, double radius, Brush fill)
         {
             return AddCircle(canvas, position, radius, fill, Cursors.Hand, CircleStrokeThickness, CircleStroke);
@@ -106,17 +96,9 @@ namespace Graph
         {
             return AddText(canvas, position, text, TextColor, TextCursor, TextFontSize, TextFontFamily, rotation);
         }
-        public static TextBlock AddText(Canvas canvas, Point position, string text, Brush color)
-        {
-            return AddText(canvas, position, text, color, TextCursor, TextFontSize, TextFontFamily, TextRotation);
-        }
         public static TextBlock AddText(Canvas canvas, Point position, string text, Cursor cursor)
         {
             return AddText(canvas, position, text, TextColor, cursor, TextFontSize, TextFontFamily, TextRotation);
-        }
-        public static TextBlock AddText(Canvas canvas, Point position, string text)
-        {
-            return AddText(canvas, position, text, TextColor, TextCursor, TextFontSize, TextFontFamily, TextRotation);
         }
     }
 }
