@@ -11,7 +11,7 @@
         <Button Margin="90,73,90,0" FontSize="14" Height="41" VerticalAlignment="Top" Click="ConfirmEdit_Click">
             <TextBlock TextAlignment="Center">Zatwierdź</TextBlock>
         </Button>
-        <TextBox Height="27" Margin="10,41,9.6,0" TextWrapping="Wrap" Text="Podaj liczbę" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="EditValue" Height="27" Margin="10,41,9.6,0" TextWrapping="Wrap" Text="Podaj liczbę" VerticalAlignment="Top" FontSize="14"/>
 
     </Grid>
 </Window>

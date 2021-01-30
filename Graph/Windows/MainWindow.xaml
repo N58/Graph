@@ -8,12 +8,15 @@
         Title="Graph" Height="750" Width="1280"
         ResizeMode="CanMinimize">
     <Grid Height="720" Width="1280">
-        <Canvas x:Name="canvas" Background="White" HorizontalAlignment="Left" Height="652" VerticalAlignment="Top" Width="1175" MouseDown="canvas_MouseDown" Margin="95,0,0,0">
+        <Canvas x:Name="canvas" x:FieldModifier="public" Background="White" HorizontalAlignment="Left" Height="652" VerticalAlignment="Top" Width="1175" MouseDown="canvas_MouseDown" Margin="95,0,0,0">
             <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="652" VerticalAlignment="Top" Width="1175" />
         </Canvas>
-        <Button x:Name="add_button" Content="Dodawanie" HorizontalAlignment="Left" Height="53" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" Click="add_button_Click"/>
-        <Button x:Name="connect_button" Content="Łączenie" HorizontalAlignment="Left" Height="53" Margin="10,68,0,0" VerticalAlignment="Top" Width="80" Click="connect_button_Click"/>
-        <Button x:Name="algorithm_button" Content="Algorytm" HorizontalAlignment="Left" Height="53" Margin="10,126,0,0" VerticalAlignment="Top" Width="80" Click="algorithm_button_Click"/>
-        <TextBlock x:Name="ModeText" x:FieldModifier="public" HorizontalAlignment="Left" Margin="95,657,0,0" TextWrapping="Wrap" Text="Tryb: " VerticalAlignment="Top" FontSize="18"/>
+        <Grid x:Name="InterfaceButtons">
+            <Button x:Name="add_button" Content="Dodawanie" HorizontalAlignment="Left" Height="53" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" Click="add_button_Click"/>
+            <Button x:Name="connect_button" Content="Łączenie" HorizontalAlignment="Left" Height="53" Margin="10,68,0,0" VerticalAlignment="Top" Width="80" Click="connect_button_Click"/>
+            <Button x:Name="algorithm_button" Content="Algorytm" HorizontalAlignment="Left" Height="53" Margin="10,126,0,0" VerticalAlignment="Top" Width="80" Click="algorithm_button_Click"/>
+            <TextBlock x:Name="ModeText" x:FieldModifier="public" HorizontalAlignment="Left" Margin="95,657,0,0" TextWrapping="Wrap" Text="Tryb: " VerticalAlignment="Top" FontSize="18"/>
+            <TextBlock x:Name="Notification" x:FieldModifier="public" HorizontalAlignment="Left" Margin="95,686,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="18"/>
+        </Grid>
     </Grid>
 </Window>

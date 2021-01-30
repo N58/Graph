@@ -64,19 +64,29 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Algorithms\Algorithm.cs" />
-    <Compile Include="Algorithms\AlgorithmDatas.cs" />
+    <Compile Include="Algorithms\BFSAlgorithm.cs" />
+    <Compile Include="Interface\Notification.cs" />
     <Compile Include="Logic\Connections.cs" />
     <Compile Include="Algorithms\DijkstraAlgorithm.cs" />
     <Compile Include="Graphics\DisplayOnCanvas.cs" />
     <Compile Include="Graphics\GraphicElements.cs" />
     <Compile Include="Graphics\Graphic.cs" />
     <Compile Include="Logic\ILogicElement.cs" />
-    <Compile Include="Modes\EditOnCanvas.cs" />
+    <Compile Include="Modes\ChoosingNodeMode.cs" />
+    <Compile Include="Modes\EditingConnectionMode.cs" />
     <Compile Include="Logic\Nodes.cs" />
     <Compile Include="Graphics\VisualConfig.cs" />
+    <Compile Include="Modes\ProcessingAlgorithmMode.cs" />
+    <Compile Include="Windows\AlgorithmsMenu.xaml.cs">
+      <DependentUpon>AlgorithmsMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ConnectMenu.xaml.cs">
       <DependentUpon>ConnectMenu.xaml</DependentUpon>
     </Compile>
+    <Page Include="Windows\AlgorithmsMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\EditingMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,13 +95,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Modes\AddOnCanvas.cs" />
+    <Compile Include="Modes\AddingNodeModes.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Modes\CanvasEvents.cs" />
-    <Compile Include="Modes\ConnectOnCanvas.cs" />
+    <Compile Include="Modes\CanvasModes.cs" />
+    <Compile Include="Modes\ConnectingNodeMode.cs" />
     <Compile Include="Logic\Connection.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Windows\EditingMenu.xaml.cs">

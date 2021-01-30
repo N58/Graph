@@ -1,7 +1,10 @@
 ﻿using Graph.Graphics;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace Graph.Logic
 {
@@ -15,8 +18,8 @@ namespace Graph.Logic
     public class Node : ILogicElement
     {
 
-        public event EventHandler OnVisitedChanged;
-        public event EventHandler OnDistanceChanged;
+        public event EventHandler OnVisitedChange;
+        public event EventHandler OnDistanceChange;
 
         public double X { get; set; }
         public double Y { get; set; }
@@ -40,13 +43,19 @@ namespace Graph.Logic
         public void SetStatus(Status value)
         {
             Status = value;
-            OnVisitedChanged?.Invoke(this, EventArgs.Empty);
+            OnVisitedChange?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void SetStatusWithDelay(Status value)
+        {
+            SetStatus(value);
+            Thread.Sleep(VisualConfig.PauzeTime);
         }
 
         public void SetDistance(double value)
         {
             Distance = value;
-            OnDistanceChanged?.Invoke(this, EventArgs.Empty);
+            OnDistanceChange?.Invoke(this, EventArgs.Empty);
         }
 
         internal Brush GetStatusColorFill()

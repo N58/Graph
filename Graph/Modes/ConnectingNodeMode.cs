@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using static Graph.Modes.AddOnCanvas;
+using static Graph.Modes.AddingNodeModes;
 
 namespace Graph.Modes
 {
-    class ConnectOnCanvas : CanvasEvents
+    class ConnectingNodeMode : CanvasModes
     {
-        public static ConnectOnCanvas Instance { get; } = new ConnectOnCanvas();
+        public static ConnectingNodeMode Instance { get; } = new ConnectingNodeMode();
         public static bool Connecting = false;
         public static Node NodeA;
         public static Node NodeB;

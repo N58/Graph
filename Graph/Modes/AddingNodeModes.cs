@@ -8,9 +8,9 @@ using System.Windows.Input;
 
 namespace Graph.Modes
 {
-    class AddOnCanvas : CanvasEvents
+    class AddingNodeModes : CanvasModes
     {
-        public static AddOnCanvas Instance { get; } = new AddOnCanvas();
+        public static AddingNodeModes Instance { get; } = new AddingNodeModes();
 
         public static event EventHandler<OnNodeEventArgs> OnNodeAdded;
         public class OnNodeEventArgs : EventArgs

@@ -8,8 +8,13 @@ using System.Windows.Input;
 
 namespace Graph.Modes
 {
-    public abstract class CanvasEvents
+    public abstract class CanvasModes
     {
+        public virtual void Initialize()
+        {
+            return;
+        }
+
         public abstract void MouseDown(object sender, MouseButtonEventArgs e);
 
         public abstract string ToString();

@@ -22,18 +22,19 @@ namespace Graph.Windows
     {
         public ConnectMenu()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            Data.SetMode(ConnectOnCanvas.Instance);
+            Data.SetMode(ConnectingNodeMode.Instance);
             this.Close();
         }
 
         private void EditValue_Click(object sender, RoutedEventArgs e)
         {
-            Data.SetMode(EditOnCanvas.Instance);
+            Data.SetMode(EditingConnectionMode.Instance);
             this.Close();
         }
     }

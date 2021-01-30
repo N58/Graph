@@ -1,0 +1,23 @@
+﻿<Window x:Class="Graph.Windows.AlgorithmsMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Graph.Windows"
+        mc:Ignorable="d"
+        Title="Wybierz algorytm" Height="189.011" Width="192.188"
+        ResizeMode="NoResize">
+    <Grid>
+        <TextBlock Margin="10,10,10,0" VerticalAlignment="Top" FontSize="20" TextAlignment="Center">Wybierz algorytm</TextBlock>
+        <Button Margin="10,52,9.6,0" VerticalAlignment="Top" Height="28" FontSize="14" Click="Dijkstra_Click">
+            <TextBlock TextAlignment="Center">Dijkstra</TextBlock>
+        </Button>
+        <Button Margin="10,85,9.6,0" FontSize="14" Height="28" VerticalAlignment="Top" Click="DFS_Click">
+            <TextBlock TextAlignment="Center">DFS</TextBlock>
+        </Button>
+        <Button Margin="10,118,9.6,0" FontSize="14" Height="28" VerticalAlignment="Top" Click="BFS_Click">
+            <TextBlock TextAlignment="Center"><Run Text="BFS"/></TextBlock>
+        </Button>
+
+    </Grid>
+</Window>

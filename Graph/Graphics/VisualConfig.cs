@@ -27,8 +27,15 @@ namespace Graph.Graphics
         public static double TextRotation { get; } = 0;
         public static Brush TextColor { get; } = Brushes.Black;
         public static Cursor TextCursor { get; } = Cursors.Arrow;
+        // Additional text colors
+        public static Brush TextRedColor { get; } = Brushes.Red;
+        public static Brush TextGreenColor { get; } = Brushes.Green;
+        public static Brush TextBlueColor { get; } = Brushes.Blue;
 
-        public static Line AddLine(Canvas canvas, Point A, Point B)
+        // Simulation
+        public static int PauzeTime { get; } = 700;
+
+        public static Line SetLine(Point A, Point B)
         {
             Line line = new Line()
             {
@@ -41,11 +48,10 @@ namespace Graph.Graphics
             };
 
             Canvas.SetZIndex(line, -1);
-            canvas.Children.Add(line);
             return line;
         }
 
-        public static Ellipse AddCircle(Canvas canvas, Point position, double radius, Brush fill, Cursor cursor, double strokeThickness, Brush stroke)
+        public static Ellipse SetCircle(Point position, double radius, Brush fill, Cursor cursor, double strokeThickness, Brush stroke)
         {
             Ellipse circle = new Ellipse()
             {
@@ -60,15 +66,14 @@ namespace Graph.Graphics
             Canvas.SetLeft(circle, position.X - (circle.Width / 2));
             Canvas.SetTop(circle, position.Y - (circle.Height / 2));
 
-            canvas.Children.Add(circle);
             return circle;
         }
-        public static Ellipse AddCircle(Canvas canvas, Point position, double radius, Brush fill)
+        public static Ellipse SetCircle(Point position, double radius, Brush fill)
         {
-            return AddCircle(canvas, position, radius, fill, Cursors.Hand, CircleStrokeThickness, CircleStroke);
+            return SetCircle(position, radius, fill, Cursors.Hand, CircleStrokeThickness, CircleStroke);
         }
 
-        public static TextBlock AddText(Canvas canvas, Point position, string text, Brush color, Cursor cursor, double fontSize, string fontFamily, double rotation)
+        public static TextBlock SetText(Point position, string text, Brush color, Cursor cursor, double fontSize, string fontFamily, double rotation)
         {
             TextBlock textblock = new TextBlock()
             {
@@ -88,17 +93,15 @@ namespace Graph.Graphics
             Canvas.SetLeft(textblock, position.X - (textblock.ActualWidth / 2));
             Canvas.SetTop(textblock, position.Y - (textblock.ActualHeight / 2));
 
-            canvas.Children.Add(textblock);
-
             return textblock;
         }
-        public static TextBlock AddText(Canvas canvas, Point position, string text, double rotation)
+        public static TextBlock SetText(Point position, string text, double rotation)
         {
-            return AddText(canvas, position, text, TextColor, TextCursor, TextFontSize, TextFontFamily, rotation);
+            return SetText(position, text, TextColor, TextCursor, TextFontSize, TextFontFamily, rotation);
         }
-        public static TextBlock AddText(Canvas canvas, Point position, string text, Cursor cursor)
+        public static TextBlock SetText(Point position, string text, Cursor cursor)
         {
-            return AddText(canvas, position, text, TextColor, cursor, TextFontSize, TextFontFamily, TextRotation);
+            return SetText(position, text, TextColor, cursor, TextFontSize, TextFontFamily, TextRotation);
         }
     }
 }

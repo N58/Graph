@@ -8,15 +8,23 @@ namespace Graph.Logic
 {
     class Connection : ILogicElement
     {
+        public event EventHandler OnConnectionValueChange;
+
         public Node A { get; set; }
         public Node B { get; set; }
-        public double value { get; set; }
+        public double Value { get; private set; }
 
         public Connection(Node a, Node b)
         {
             A = a;
             B = b;
-            value = Math.Sqrt(Math.Pow((b.X - a.X), 2) + Math.Pow((b.Y - a.Y), 2));
+            SetValue(Math.Sqrt(Math.Pow((b.X - a.X), 2) + Math.Pow((b.Y - a.Y), 2)));
+        }
+
+        public void SetValue(double value)
+        {
+            Value = value;
+            OnConnectionValueChange?.Invoke(this, EventArgs.Empty);
         }
     }
 }

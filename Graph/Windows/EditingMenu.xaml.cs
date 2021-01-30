@@ -21,6 +21,7 @@ namespace Graph.Windows
     {
         public EditingMenu()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 
