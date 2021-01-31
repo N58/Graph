@@ -33,7 +33,7 @@ namespace Graph.Graphics
         public static Brush TextBlueColor { get; } = Brushes.Blue;
 
         // Simulation
-        public static int PauzeTime { get; } = 700;
+        public static int PauzeTime { get; } = 1400;
 
         public static Line SetLine(Point A, Point B)
         {

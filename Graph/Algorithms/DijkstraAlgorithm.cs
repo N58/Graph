@@ -38,7 +38,7 @@ namespace Graph.Algorithms
                     }
                 });
 
-                current.SetStatusWithDelay(Status.Visited);
+                current.SetStatus(Status.Visited);
             }
         }
     }

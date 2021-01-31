@@ -27,7 +27,7 @@ namespace Graph.Algorithms
                         queue.Enqueue(neighbour);
                     }
                 });
-                current.SetStatusWithDelay(Status.Visited);
+                current.SetStatus(Status.Visited);
             }
         }
     }

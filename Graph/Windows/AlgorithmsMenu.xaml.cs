@@ -23,6 +23,7 @@ namespace Graph.Windows
 
         private void DFS_Click(object sender, RoutedEventArgs e)
         {
+            var dfs = new DFSAlgoithm();
             this.Close();
         }
 
