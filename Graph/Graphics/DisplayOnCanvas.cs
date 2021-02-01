@@ -133,12 +133,16 @@ namespace Graph.Graphics
         private static void ConnectionValueChanged(object sender, EventArgs e)
         {
             var conn = (Connection)sender;
-            var textblock = (TextBlock)Data.UIElements.List.FirstOrDefault(c => c.LogicElement == conn).Text;
+            Graphic graphic = Data.UIElements.List.FirstOrDefault(c => c.LogicElement == conn);
+            var oldTextblock = graphic.Text;
             var text = conn.Value.ToString();
 
             double theta = CalcualteTextRotation(conn.A, conn.B);
             Point middle = CalculateTextPosition(conn.A, conn.B, theta);
-            UpdateCanvas(textblock, VisualConfig.SetText(middle, text, theta));
+            var newTextblock = VisualConfig.SetText(middle, text, theta);
+
+            graphic.Text = newTextblock;
+            UpdateCanvas(oldTextblock, newTextblock);
         }
 
         private static void UpdateCanvas(UIElement oldUI, UIElement newUI)
