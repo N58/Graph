@@ -34,6 +34,7 @@ namespace Graph.Modes
             if (Data.Nodes.List.Any(n => Data.IsInCircle(pos, n))) return;
 
             Data.Nodes.List.Add(node);
+            node.Value = Data.Nodes.List.Count;
             OnNodeAdded?.Invoke(this, new OnNodeEventArgs { Canvas = canvas, Node = node });
         }
 

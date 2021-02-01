@@ -41,7 +41,7 @@ namespace Graph.Graphics
             Canvas canvas = e.Canvas;
             Ellipse circle = VisualConfig.SetCircle(e.Node.Point, VisualConfig.CircleRadius, VisualConfig.CircleFill);
             canvas.Children.Add(circle);
-            string text = (Data.Nodes.List.IndexOf(e.Node) + 1).ToString();
+            string text = e.Node.Value.ToString();
             TextBlock textblock = VisualConfig.SetText(e.Node.Point, text, Cursors.Hand);
             canvas.Children.Add(textblock);
             Graphic element = new Graphic(e.Node, circle, textblock);

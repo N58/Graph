@@ -21,6 +21,7 @@ namespace Graph.Logic
         public event EventHandler OnVisitedChange;
         public event EventHandler OnDistanceChange;
 
+        public int Value { get; set; }
         public double X { get; set; }
         public double Y { get; set; }
         public Point Point { get { return new Point(X, Y); } }

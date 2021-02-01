@@ -26,7 +26,7 @@ namespace Graph.Logic
                     result.Add(conn.A);
             }
 
-            return result;
+            return result.OrderBy(n => n.Value).ToList();
         }
 
         public Connection GetConnection(Node a, Node b)
