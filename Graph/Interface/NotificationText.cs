@@ -1,16 +1,12 @@
 ﻿using Graph.Graphics;
 using Graph.Windows;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
 namespace Graph.Interface
 {
-    static class Notification
+    static class NotificationText
     {
         private static MainWindow window = (MainWindow)Application.Current.MainWindow;
 

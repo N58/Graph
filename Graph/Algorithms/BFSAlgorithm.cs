@@ -18,6 +18,7 @@ namespace Graph.Algorithms
             {
                 Node current = queue.Dequeue();
                 current.SetStatusWithDelay(Status.Current);
+                AddToEndOfResult(current);
 
                 List<Node> neighbours = Data.Connections.GetNeighbours(current);
                 neighbours.ForEach(neighbour =>

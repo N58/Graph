@@ -66,7 +66,8 @@
     <Compile Include="Algorithms\Algorithm.cs" />
     <Compile Include="Algorithms\BFSAlgorithm.cs" />
     <Compile Include="Algorithms\DFSAlgoithm.cs" />
-    <Compile Include="Interface\Notification.cs" />
+    <Compile Include="Interface\NotificationText.cs" />
+    <Compile Include="Interface\ResultText.cs" />
     <Compile Include="Logic\Connections.cs" />
     <Compile Include="Algorithms\DijkstraAlgorithm.cs" />
     <Compile Include="Graphics\DisplayOnCanvas.cs" />

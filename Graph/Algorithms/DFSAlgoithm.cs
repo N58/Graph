@@ -11,16 +11,14 @@ namespace Graph.Algorithms
     {
         internal override void Execute()
         {
-            Data.Nodes.List.ForEach(n => 
-            {
-                if (n.Status != Status.Visited)
-                    DFS(n);
-            });
+            DFS(StartingNode);
         }
 
         private void DFS(Node current)
         {
             current.SetStatusWithDelay(Status.Current);
+            AddToEndOfResult(current);
+
             List<Node> neighbours = Data.Connections.GetNeighbours(current);
             current.SetStatus(Status.Visited);
             neighbours.ForEach(neighbour =>

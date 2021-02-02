@@ -30,7 +30,7 @@ namespace Graph.Modes
 
         public override string ToString()
         {
-            Notification.SetInfo("Wybierz wierzchołek");
+            NotificationText.SetInfo("Wybierz wierzchołek");
             return "Wybierania wierzchołka";
         }
     }
